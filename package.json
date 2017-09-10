@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/songyunze/tit-react-pc-ui/issues"
   },
-  "homepage": "https://github.com/songyunze/tit-react-pc-ui#readme"
+  "homepage": "https://github.com/songyunze/tit-react-pc-ui#readme",
+  "dependencies": {
+    "react": "^15.6.1"
+  }
 }
