@@ -6,6 +6,7 @@ import {observable} from 'mobx';
 import Login from './pages/login.js';
 import Regist from './pages/regist/regist.js';
 import Perf from 'react-addons-perf';
+import {Helmet} from "react-helmet";
 window.Perf=Perf;
 
 const store={
@@ -19,6 +20,10 @@ const store={
 	render(){
 		return (
 			<div className='App' style={store.style} >
+				<Helmet>
+					<title>React App</title>
+					<meta name="description" content="React mobx project" />
+				</Helmet>
 				<Provider store = {store} >
 					<BrowserRouter>
 						<Switch>

@@ -3,6 +3,7 @@ import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Butto
 import Fecth from '../../utils/fetch.js';
 import {observer} from 'mobx-react';
 import store from './registStore.js';
+import {Helmet} from "react-helmet";
 const FormItem = Form.Item;
 const Option = Select.Option;
 const AutoCompleteOption = AutoComplete.Option;
@@ -298,6 +299,10 @@ class RegistrationForm extends Component {
 class Regist extends Component {
   render(){
     return (<div>
+          <Helmet>
+						<title>注册</title>
+						<meta name="description" content="React mobx project" />
+					</Helmet>
         <div style={{height:window.innerHeight,overflow:'hidden'}} > 
           <img style={{width:'100%'}}  src={require('../../imgs/SoftBlue.jpg')} alt="" />
         </div>
