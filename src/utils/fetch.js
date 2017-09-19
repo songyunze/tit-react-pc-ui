@@ -21,20 +21,20 @@ class Fecth {
 		}
 	}
 	get(url,args,retVal,options){
-		return fetchFactory(url,args,retVal,options,"GET");
+		return fetchFactory(url,args,retVal,options,"GET",this.urlOptions);
 	}
 	post(url,args,retVal,options){
-		return fetchFactory(url,args,retVal,options,"POST")
+		return fetchFactory(url,args,retVal,options,"POST",this.urlOptions)
 	}
 	put(url,args,retVal,options){
-		return fetchFactory(url,args,retVal,options,"PUT")
+		return fetchFactory(url,args,retVal,options,"PUT",this.urlOptions)
 	}
 	delete(url,args,retVal,options){
-		return fetchFactory(url,args,retVal,options,"DELETE")
+		return fetchFactory(url,args,retVal,options,"DELETE",this.urlOptions)
 	}
 }
 
-function fetchFactory(url,args,retVal,options,method){
+function fetchFactory(url,args,retVal,options,method,originOptions){
 	return new Promise( async (resolve,reject)=>{
 		try{
 			//当开发环境时直接返回第三个参数。
@@ -52,19 +52,19 @@ function fetchFactory(url,args,retVal,options,method){
 					}else{
 						throw new Error('传入的参数必须是 object，string其一');
 					}
-					this.urlOptions.method='GET';
+					originOptions.method='GET';
 					//get 请求不准有body属性
 					delete this.urlOptions.body
 				}else{
-					this.urlOptions.method=method;
-					this.urlOptions.body=JSON.stringify(args);
+					originOptions.method=method;
+					originOptions.body=JSON.stringify(args);
 				}
 
 				if(options){
-					Object.assign(this.urlOptions,options)
+					Object.assign(originOptions,options)
 				}
 
-				let response= await fetch(url,this.urlOptions);
+				let response= await fetch(url,originOptions);
 				resolve(response.json());
 				}
 
