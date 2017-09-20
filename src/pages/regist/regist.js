@@ -55,6 +55,10 @@ class RegistrationForm extends Component {
       if (!err) {
         values.website=store.website;
         console.log('Received values of form: ', values);
+        let retVal={message:'注册成功'}
+        Fecth.post('regist',retVal).then((result)=>{
+          window.location.href="/";
+        })
       }
     });
   }

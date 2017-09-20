@@ -32,6 +32,7 @@ class NormalLoginForm extends Component {
         <FormItem>
           {getFieldDecorator('userName', {
             rules: [{ required: true, message: '用户名不能为空!' }],
+            initialValue:window.history.state?window.history.state.state.userName:''
           })(
             <Input id='userName' onChange={(e)=>{userName=e.target.value}}  prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="用户名" />
           )}

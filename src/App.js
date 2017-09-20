@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Provider , observer} from 'mobx-react';
+import {observer} from 'mobx-react';
 import './App.css';
-import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import {BrowserRouter,Route} from 'react-router-dom';
 import {observable} from 'mobx';
 import Login from './pages/login.js';
 import Regist from './pages/regist/regist.js';
@@ -15,6 +15,7 @@ const store={
 		background:'#FFF'
 	})
 }
+window.store=store;
 
 @observer class App extends Component{
 	render(){
@@ -24,14 +25,12 @@ const store={
 					<title>React App</title>
 					<meta name="description" content="React mobx project" />
 				</Helmet>
-				<Provider store = {store} >
 					<BrowserRouter>
-						<Switch>
-						<Route component={Regist} path='/regist'/>
-						<Route component={Login} />
-						</Switch>
+					<div>
+						<Route exact path='/regist' component={Regist}/>
+						<Route exact path="/" component={Login} />
+					</div>
 					</BrowserRouter>
-				</Provider>
 			</div>
 		)
 	}
